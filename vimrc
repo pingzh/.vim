@@ -33,6 +33,7 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'garbas/vim-snipmate'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'fatih/vim-go'
+Plugin 'vim-ruby/vim-ruby'
 
 """"""""""""""""""""""""""""""
 " vim-powerline symbols
@@ -208,7 +209,10 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Spell check always on
-set spell spelllang=en_us
+" set spell spelllang=en_us
+
+" Ruby
+autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 
 " Python Specific settings
 autocmd FileType python set sw=4
