@@ -19,30 +19,4 @@ cp vimrc ~/.vimrc
 vim +BundleInstall +qall
 
 ## Here I personally use RailsCasts
-```
 
-![vim-screenshot](https://cldup.com/1dmJIl_QKV-3000x3000.png)
-
-In order to install the older version of my dotvim:
-
-```sh
-git clone git@github.com:vinitkumar/.vim.git
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cd .vim
-git fetch origin
-git checkout origin/master-old
-cp vimrc ~/.vimrc
-cp vimrc.before ~/.vimrc.before
-cp vimrc.bundles ~/.vimrc.bundles
-vim +BundleInstall +qall
-```
-
-## Fonts
-
-Install the font [Inconsolata for Powerline.otf](https://github.com/powerline/fonts/raw/master/Inconsolata/Inconsolata%20for%20Powerline.otf)
-
-
-## Notes:
-
-Patches and fixes are most welcome. Just make sure that you aren't breaking something. Also, open issues
-for any feature requests.
