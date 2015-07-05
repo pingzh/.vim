@@ -20,3 +20,12 @@ vim +BundleInstall +qall
 
 ## Here I personally use RailsCasts
 
+
+--Some solutions to bugs
+
+1. If you see '$' at the end of each line, you just comment row 96, set list
+
+2. If you get an error, like "VIM Error: E474: Invalid argument: listchars=tab:»·,trail:·", then you put the following two lines on the top of vimrc file:
+
+scriptencoding utf-8
+set encoding=utf-8
