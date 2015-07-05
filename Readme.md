@@ -15,6 +15,8 @@ git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cd .vim
 cp vimrc ~/.vimrc
 vim +BundleInstall +qall
+
+## You also need to copy colors into vim directory, and here I personally use RailsCasts
 ```
 
 ![vim-screenshot](https://cldup.com/1dmJIl_QKV-3000x3000.png)
