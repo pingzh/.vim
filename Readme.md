@@ -10,7 +10,7 @@ is fun to write code in my Vim again. Hope you enjoy it and if you do, you can t
 In order to install the latest version:
 
 ```sh
-git clone git@github.com:vinitkumar/.vim.git
+git clone git@github.com:pingzh/.vim.git
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 cd .vim
 mkdir ~/.vim/colors #if you don't have colors directory
