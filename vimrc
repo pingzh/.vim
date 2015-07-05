@@ -69,8 +69,8 @@ syntax on
 set autoread
 
 set background=dark
-colorscheme molokai
-let g:colors_name="molokai"
+colorscheme railscasts
+let g:colors_name="railscasts"
 set guifont=Inconsolata\ for\ Powerline:h14
 set antialias
 " Whitespace
