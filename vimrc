@@ -33,7 +33,7 @@ Plugin 'tomtom/tlib_vim'
 " Plugin 'garbas/vim-snipmate'
 Plugin 'bronson/vim-trailing-whitespace'
 " Plugin 'fatih/vim-go'
-Plugin 'vim-ruby/vim-ruby'
+" Plugin 'vim-ruby/vim-ruby'
 
 """"""""""""""""""""""""""""""
 " vim-powerline symbols
