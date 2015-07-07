@@ -70,8 +70,8 @@ syntax on
 set autoread
 
 set background=dark
-colorscheme railscasts
-let g:colors_name="railscasts"
+colorscheme Tomorrow-Night
+let g:colors_name="Tomorrow-Night"
 set guifont=Inconsolata\ for\ Powerline:h14
 set antialias
 " Whitespace
