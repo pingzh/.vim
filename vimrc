@@ -33,7 +33,7 @@ Plugin 'tomtom/tlib_vim'
 " Plugin 'garbas/vim-snipmate'
 Plugin 'bronson/vim-trailing-whitespace'
 " Plugin 'fatih/vim-go'
-" Plugin 'vim-ruby/vim-ruby'
+Plugin 'vim-ruby/vim-ruby'
 
 """"""""""""""""""""""""""""""
 " vim-powerline symbols
@@ -89,8 +89,8 @@ set wildmode=list:longest,full  " Command <Tab> completion, list matches, then l
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 set scrolljump=5                " Lines to scroll when cursor leaves screen
 set scrolloff=999               " Minimum lines to keep above and below cursor
-set foldenable                  " Auto fold code
-set list
+" set foldenable                  " Auto fold code
+" set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 set splitbelow
 set splitright
@@ -109,11 +109,11 @@ set diffopt+=iwhite " Ignore whitespace changes (focus on code changes)
 set encoding=utf-8 nobomb " BOM often causes trouble
 set esckeys " Allow cursor keys in insert mode.
 set expandtab " Expand tabs to spaces
-set foldcolumn=2 " Column to show folds
-set foldlevel=2
-set foldlevelstart=2 " Sets `foldlevel` when editing a new buffer
-set foldmethod=indent " Markers are used to specify folds.
-set foldnestmax=3 " Set max fold nesting level
+" set foldcolumn=2 " Column to show folds
+" set foldlevel=2
+" set foldlevelstart=2 " Sets `foldlevel` when editing a new buffer
+" set foldmethod=indent " Markers are used to specify folds.
+" set foldnestmax=3 " Set max fold nesting level
 set hidden " When a buffer is brought to foreground, remember undo history and marks.
 set history=100 " Increase history from 20 default to 1000
 set laststatus=2 " Always show status line
@@ -166,10 +166,10 @@ endif
 
 
 " SimpleFold related settings # Maybe
-nnoremap <space> za
-vnoremap <space> zf
-let g:indentobject_meaningful_indentation = ["python", "markdown", "ocaml"]
-autocmd FileType python setlocal completeopt-=preview
+" nnoremap <space> za
+" vnoremap <space> zf
+" let g:indentobject_meaningful_indentation = ["python", "markdown", "ocaml"]
+" autocmd FileType python setlocal completeopt-=preview
 
 
 if &term == 'xterm' || &term == 'screen'
