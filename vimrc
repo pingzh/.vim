@@ -1,6 +1,5 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
-
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -10,30 +9,29 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'gmarik/Vundle.vim'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'davidhalter/jedi-vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
-" Plugin 'tmhedberg/SimpylFold'
 Plugin 'bling/vim-airline'
-" Plugin 'chriskempson/base16-vim'
-" Plugin 'sjl/badwolf'
 Plugin 'xolox/vim-misc'
-" Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
 Plugin 'vinitkumar/vim-tomorrow-theme'
-" Plugin 'mrtazz/DoxygenToolkit.vim'
-" Plugin 'Ack.vim'
 Plugin 'mattn/webapi-vim'
-" Plugin 'mattn/gist-vim'
 Plugin 'groenewege/vim-less'
-Plugin 'mattn/emmet-vim'
-" Plugin 'whatyouhide/vim-gotham'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tomtom/tlib_vim'
-" Plugin 'garbas/vim-snipmate'
 Plugin 'bronson/vim-trailing-whitespace'
-" Plugin 'fatih/vim-go'
 Plugin 'vim-ruby/vim-ruby'
+Plugin 'tpope/vim-commentary'
+Plugin 'mileszs/ack.vim'
+Plugin 'pingzh/ag.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'yegappan/mru'
+Plugin 'skwp/greplace.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'mxw/vim-jsx'
+Plugin 'pearofducks/ansible-vim'
+Plugin 'tmhedberg/SimpylFold'
+
 
 """"""""""""""""""""""""""""""
 " vim-powerline symbols
@@ -45,9 +43,10 @@ let g:airline_left_alt_sep = '⮁'
 let g:airline_right_sep = '⮂'
 let g:airline_right_alt_sep = '⮃'
 
+:nnoremap <CR> :nohlsearch<CR><CR>
 
 "tagbar related settings
-set tags=./tags;,~/.vimtags
+ set tags=./tags;,~/.vimtags
 +" Sensible defaults
 let g:easytags_events = ['BufReadPost', 'BufWritePost']
 let g:easytags_async = 1
@@ -69,10 +68,11 @@ set mouse=a
 syntax on
 set autoread
 
+syntax enable
 set background=dark
 colorscheme Tomorrow-Night
 let g:colors_name="Tomorrow-Night"
-set guifont=Inconsolata\ for\ Powerline:h14
+" set guifont=Inconsolata\ for\ Powerline:h17
 set antialias
 " Whitespace
 
@@ -88,32 +88,28 @@ set wildmenu                    " Show list instead of just completing
 set wildmode=list:longest,full  " Command <Tab> completion, list matches, then longest common part, then all.
 set whichwrap=b,s,h,l,<,>,[,]   " Backspace and cursor keys wrap too
 set scrolljump=5                " Lines to scroll when cursor leaves screen
-set scrolloff=999               " Minimum lines to keep above and below cursor
-" set foldenable                  " Auto fold code
-" set list
+" set scrolloff=999               " Minimum lines to keep above and below cursor
+set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 set splitbelow
 set splitright
 set visualbell
 
+:nnoremap <Leader>zz :let &scrolloff=999-&scrolloff<CR>
 
 " }
 
 " Formatting {
 
 set autoindent " Copy indent from last line when starting new line.
-set colorcolumn=80 " mark col 80
+set colorcolumn=120 " mark col 80
 set cursorline " Highlight current line
+set cursorcolumn
 set diffopt=filler " Add vertical spaces to keep right and left aligned
 set diffopt+=iwhite " Ignore whitespace changes (focus on code changes)
 set encoding=utf-8 nobomb " BOM often causes trouble
 set esckeys " Allow cursor keys in insert mode.
 set expandtab " Expand tabs to spaces
-" set foldcolumn=2 " Column to show folds
-" set foldlevel=2
-" set foldlevelstart=2 " Sets `foldlevel` when editing a new buffer
-" set foldmethod=indent " Markers are used to specify folds.
-" set foldnestmax=3 " Set max fold nesting level
 set hidden " When a buffer is brought to foreground, remember undo history and marks.
 set history=100 " Increase history from 20 default to 1000
 set laststatus=2 " Always show status line
@@ -132,7 +128,8 @@ set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
 set wildmenu " Hitting TAB in command mode will show possible completions above command line.
 set wildmode=list:longest " Complete only until point of ambiguity.
 
-set wrap
+
+set nowrap
 set textwidth=79
 set formatoptions=qrn1
 
@@ -165,15 +162,9 @@ if filereadable($VIRTUAL_ENV . '/vimrc')
 endif
 
 
-" SimpleFold related settings # Maybe
-" nnoremap <space> za
-" vnoremap <space> zf
-" let g:indentobject_meaningful_indentation = ["python", "markdown", "ocaml"]
-" autocmd FileType python setlocal completeopt-=preview
-
 
 if &term == 'xterm' || &term == 'screen'
-	set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
+  set t_Co=256            " Enable 256 colors to stop the CSApprox warning and make xterm vim shine
 endif
 
 " CtrlP related settings
@@ -209,7 +200,7 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 " Spell check always on
-" set spell spelllang=en_us
+"set spell spelllang=en_us
 
 " Ruby
 autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
@@ -223,7 +214,9 @@ autocmd FileType python set sts=4
 autocmd FileType javascript set sw=2
 autocmd FileType javascript set ts=2
 autocmd FileType javascript set sts=2
-
+" syntax hightlighting for jsx
+let g:javascript_enable_domhtmlcss = 1
+let g:jsx_ext_required = 0
 
 " html
 autocmd FileType html set sw=2
@@ -239,13 +232,17 @@ set pastetoggle=<F2>
 
 " Save key stroke
 nnoremap ; :
+nnoremap / :/
 
 " Space the final frontier
-let mapleader = "\<Space>"
+let mapleader = ","
+
+" avoid ESC
+:imap <Leader>f <Esc>
+:imap <Leader>w <Esc>:w<CR>
 
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
-
 
 " cd to the directory containing the file in the buffer. Both the local
 " and global flavors.
@@ -256,9 +253,12 @@ nmap <leader>lcd :lcd %:h<CR>
 nmap <silent> <leader>vimrc :e ~/.vimrc<CR>
 
 " Shortcut to yanking to the system clipboard
+set clipboard=unnamed
 map <leader>y "*y
 map <leader>p "*p
 
+" MRU
+map <leader>m :MRU<CR>
 
 " Command to write as root if we dont' have permission
 cmap w!! %!sudo tee > /dev/null %
@@ -275,4 +275,55 @@ let g:go_golint_bin="/Users/vinitkumar/go/bin/golint"
 let g:go_fmt_autosave = 1
 let g:github_upstream_issues = 1
 set rtp+=$GOPATH/src/github.com/golang/lint/misc/vim
+
+autocmd filetype crontab setlocal nobackup nowritebackup
+
+" copy current filename into system clipboard - mnemonic: (c)urrent(f)ilename
+" this is helpful to paste someone the path you're looking at
+nnoremap <silent> <leader>cf :let @* = expand("%:~")<CR>
+nnoremap <silent> <leader>cn :let @* = expand("%:t")<CR>
+" Ag
+let g:ackprg = 'ag --nogroup --nocolor --column'
+
+
+
+
+
+function! Smart_TabComplete()
+  let line = getline('.')                         " current line
+
+  let substr = strpart(line, -1, col('.')+1)      " from the start of the current
+                                                  " line to one character right
+                                                  " of the cursor
+  let substr = matchstr(substr, "[^ \t]*$")       " word till cursor
+  if (strlen(substr)==0)                          " nothing to match on empty string
+    return "\<tab>"
+  endif
+  let has_period = match(substr, '\.') != -1      " position of period, if any
+  let has_slash = match(substr, '\/') != -1       " position of slash, if any
+  if (!has_period && !has_slash)
+    return "\<C-X>\<C-P>"                         " existing text matching
+  elseif ( has_slash )
+    return "\<C-X>\<C-F>"                         " file matching
+  else
+    return "\<C-X>\<C-O>"                         " plugin matching
+  endif
+endfunction
+inoremap <tab> <c-r>=Smart_TabComplete()<CR>
+"the above block used to use tab to autocomplete
+
+
+
+" gitgutter
+let g:gitgutter_highlight_lines = 0
+let g:gitgutter_override_sign_column_highlight = 0
+
+" Alt ruby
+nnoremap <leader>at :AlternateToggle<cr>
+nnoremap <leader>av :AlternateVerticalSplit<cr>
+nnoremap <leader>as :AlternateHorizontalSplit<cr>
+
+" greplace
+set grepprg=ag
+let g:grep_cmd_opts = '--line-numbers --noheading'
 
