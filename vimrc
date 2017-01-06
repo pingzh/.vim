@@ -70,8 +70,8 @@ set autoread
 
 syntax enable
 set background=dark
-colorscheme Tomorrow-Night
-let g:colors_name="Tomorrow-Night"
+colorscheme molokai
+let g:colors_name="molokai"
 " set guifont=Inconsolata\ for\ Powerline:h17
 set antialias
 " Whitespace
@@ -327,3 +327,7 @@ nnoremap <leader>as :AlternateHorizontalSplit<cr>
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
 
+" set theme for mac vim
+if has("gui_running")
+  colorscheme base16-google
+endif
