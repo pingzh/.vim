@@ -72,10 +72,25 @@ syntax enable
 set background=dark
 colorscheme solarized
 if has('gui_running')
+    let g:scheme_bg = "dark"
     set background=dark
 else
+    let g:scheme_bg = "light"
     set background=light
 endif
+
+" toggle theme
+function! ToggleDark()
+  if g:scheme_bg == "dark"
+    set background=light
+    let g:scheme_bg = "light"
+  else
+    set background=dark
+    let g:scheme_bg = "dark"
+  endif
+endfunction
+map <F3> :call ToggleDark()<CR>
+
 set antialias
 " Whitespace
 
@@ -335,3 +350,22 @@ let g:grep_cmd_opts = '--line-numbers --noheading'
 " autocompleted {}
 inoremap { {}<ESC>ha
 
+
+if has("gui_macvim")
+  " display tab number
+  set guitablabel=⌘%N@\ %t\ %M
+  " display tab number
+
+  " Switch to specific tab numbers with Command-number
+  noremap <D-1> :tabn 1<CR>
+  noremap <D-2> :tabn 2<CR>
+  noremap <D-3> :tabn 3<CR>
+  noremap <D-4> :tabn 4<CR>
+  noremap <D-5> :tabn 5<CR>
+  noremap <D-6> :tabn 6<CR>
+  noremap <D-7> :tabn 7<CR>
+  noremap <D-8> :tabn 8<CR>
+  noremap <D-9> :tabn 9<CR>
+  " Command-0 goes to the last tab
+  noremap <D-0> :tablast<CR>
+endif
