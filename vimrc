@@ -172,7 +172,9 @@ endif
 
 " CtrlP related settings
 let g:ctrlp_working_path_mode = ''
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip     " MacOSX/Linux
 set wildignore=.svn,CVS,.git,.hg,*.o,*.a,*.class,*.mo,*.la,*.so,*.obj,*.swp,*.jpg,*.png,*.xpm,*.gif,.DS_Store,*.aux,*.out,*.toc,tmp,*.scssc,*.pyc,tags
+let g:ctrlp_custom_ignore = 'node_modules\|bower_components'
 set wildmenu
 
 
