@@ -331,3 +331,7 @@ nnoremap <leader>as :AlternateHorizontalSplit<cr>
 " greplace
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
+
+" autocompleted {}
+inoremap { {}<ESC>ha
+
