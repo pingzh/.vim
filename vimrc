@@ -12,9 +12,9 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'kien/ctrlp.vim'
 Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 Plugin 'xolox/vim-misc'
 Plugin 'majutsushi/tagbar'
-Plugin 'vinitkumar/vim-tomorrow-theme'
 Plugin 'mattn/webapi-vim'
 Plugin 'groenewege/vim-less'
 Plugin 'MarcWeber/vim-addon-mw-utils'
@@ -70,9 +70,12 @@ set autoread
 
 syntax enable
 set background=dark
-colorscheme molokai
-let g:colors_name="molokai"
-" set guifont=Inconsolata\ for\ Powerline:h17
+colorscheme solarized
+if has('gui_running')
+    set background=dark
+else
+    set background=light
+endif
 set antialias
 " Whitespace
 
@@ -326,8 +329,3 @@ nnoremap <leader>as :AlternateHorizontalSplit<cr>
 " greplace
 set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
-
-" set theme for mac vim
-if has("gui_running")
-  colorscheme base16-google
-endif
