@@ -91,6 +91,13 @@ function! ToggleDark()
 endfunction
 map <F3> :call ToggleDark()<CR>
 
+function! ShowTabNumber()
+  if has('gui_running')
+    set guitablabel=⌘%N@%M%t
+  endif
+endfunction
+map <F2> :call ShowTabNumber()<CR>
+
 set antialias
 " Whitespace
 
@@ -352,9 +359,6 @@ inoremap { {}<ESC>ha
 
 
 if has("gui_macvim")
-  " display tab number
-  set guitablabel=⌘%N@\ %t\ %M
-  " display tab number
 
   " Switch to specific tab numbers with Command-number
   noremap <D-1> :tabn 1<CR>
