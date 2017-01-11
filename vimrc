@@ -79,6 +79,13 @@ else
     set background=light
 endif
 
+" change gitgutter color to work with solarized better
+highlight clear SignColumn
+highlight GitGutterAdd ctermfg=green
+highlight GitGutterChange ctermfg=yellow
+highlight GitGutterDelete ctermfg=red
+highlight GitGutterChangeDelete ctermfg=yellow
+
 " toggle theme
 function! ToggleDark()
   if g:scheme_bg == "dark"
@@ -88,6 +95,13 @@ function! ToggleDark()
     set background=dark
     let g:scheme_bg = "dark"
   endif
+
+  " change gitgutter color to work with solarized better
+  highlight clear SignColumn
+  highlight GitGutterAdd ctermfg=green
+  highlight GitGutterChange ctermfg=yellow
+  highlight GitGutterDelete ctermfg=red
+  highlight GitGutterChangeDelete ctermfg=yellow
 endfunction
 map <F3> :call ToggleDark()<CR>
 
@@ -355,7 +369,8 @@ set grepprg=ag
 let g:grep_cmd_opts = '--line-numbers --noheading'
 
 " autocompleted {}
-inoremap { {}<ESC>ha
+" inoremap { {}<ESC>ha
+" inoremap ( ()<ESC>ha
 
 
 if has("gui_macvim")
