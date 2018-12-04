@@ -391,4 +391,7 @@ if has("gui_macvim")
   noremap <D-9> :tabn 9<CR>
   " Command-0 goes to the last tab
   noremap <D-0> :tablast<CR>
+  
+  set guifont=Monaco:h14     " OSX.
+
 endif
