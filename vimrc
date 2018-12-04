@@ -393,5 +393,5 @@ if has("gui_macvim")
   noremap <D-0> :tablast<CR>
   
   set guifont=Monaco:h14     " OSX.
-
+  :call ShowTabNumber()
 endif
