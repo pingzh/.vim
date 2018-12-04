@@ -23,14 +23,15 @@ Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'tpope/vim-commentary'
 Plugin 'mileszs/ack.vim'
-Plugin 'pingzh/ag.vim'
+Plugin 'rking/ag.vim'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'yegappan/mru'
 Plugin 'skwp/greplace.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'pearofducks/ansible-vim'
-Plugin 'tmhedberg/SimpylFold'
+Plugin 'isRuslan/vim-es6'
+Plugin 'prabirshrestha/asyncomplete.vim'
 
 
 """"""""""""""""""""""""""""""
@@ -255,9 +256,12 @@ autocmd FileType python set sts=4
 autocmd FileType javascript set sw=2
 autocmd FileType javascript set ts=2
 autocmd FileType javascript set sts=2
+au BufNewFile,BufRead *.es6 set filetype=javascript
 " syntax hightlighting for jsx
 let g:javascript_enable_domhtmlcss = 1
 let g:jsx_ext_required = 0
+let g:javascript_plugin_flow = 1
+
 
 " html
 autocmd FileType html set sw=2
@@ -281,6 +285,8 @@ let mapleader = ","
 " avoid ESC
 :imap <Leader>f <Esc>
 :imap <Leader>w <Esc>:w<CR>
+
+vnoremap <C-c> <Esc>
 
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
@@ -325,8 +331,6 @@ nnoremap <silent> <leader>cf :let @* = expand("%:~")<CR>
 nnoremap <silent> <leader>cn :let @* = expand("%:t")<CR>
 " Ag
 let g:ackprg = 'ag --nogroup --nocolor --column'
-
-
 
 
 
