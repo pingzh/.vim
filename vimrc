@@ -291,6 +291,17 @@ vnoremap <C-c> <Esc>
 nnoremap <Leader>o :CtrlP<CR>
 nnoremap <Leader>w :w<CR>
 
+nnoremap <leader>w :w<cr>
+inoremap <leader>w <C-c>:w<cr>
+
+" align-current-paragraph-with-leader-a
+noremap <leader>a =ip
+" toggle-paste-mode
+set pastetoggle=<leader>z
+
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
+
 " cd to the directory containing the file in the buffer. Both the local
 " and global flavors.
 nmap <leader>cd :cd %:h<CR>
