@@ -1,5 +1,35 @@
 set nocompatible              " be iMproved, required
 filetype off                  " required
+" Space the final frontier
+let mapleader = ","
+" Save key stroke
+nnoremap ; :
+nnoremap / :/
+
+
+" avoid ESC
+" :imap <Leader>f <Esc>
+" :imap <Leader>w <Esc>:w<CR>
+
+vnoremap <C-c> <Esc>
+nnoremap <C-c> :w<CR>
+inoremap <C-c> <Esc>:w<CR>
+
+nnoremap <Leader>o :CtrlP<CR>
+nnoremap <Leader>w :w<CR>
+inoremap <Leader>w <Esc>:w<cr>
+inoremap <Leader>s <Esc>:w<cr>
+
+" align-current-paragraph-with-leader-a
+noremap <leader>a =ip
+" toggle-paste-mode
+set pastetoggle=<leader>z
+
+" cd to the directory containing the file in the buffer. Both the local
+" and global flavors.
+nmap <leader>cd :cd %:h<CR>
+nmap <leader>lcd :lcd %:h<CR>
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -30,8 +60,16 @@ Plugin 'skwp/greplace.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'pearofducks/ansible-vim'
+"Plugin 'tmhedberg/SimpylFold'
 Plugin 'isRuslan/vim-es6'
+Plugin 'w0rp/ale'
+Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
+Plugin 'Quramy/tsuquyomi'
+" Plugin 'Shougo/neocomplete.vim'
+
+Plugin 'prabirshrestha/async.vim'
 Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-flow.vim'
 
 
 """"""""""""""""""""""""""""""
@@ -73,8 +111,8 @@ syntax enable
 set background=dark
 colorscheme solarized
 if has('gui_running')
-    let g:scheme_bg = "dark"
-    set background=dark
+    let g:scheme_bg = "light"
+    set background=light
 else
     let g:scheme_bg = "light"
     set background=light
@@ -235,7 +273,7 @@ let g:DoxygenToolkit_authorName="Vinit Kumar"
 
 "Nerdtree
 nmap <C-u> :NERDTreeToggle<CR>
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = ['\.pyc$', 'node_modules']
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -251,6 +289,11 @@ autocmd Filetype ruby setlocal ts=2 sts=2 sw=2
 autocmd FileType python set sw=4
 autocmd FileType python set ts=4
 autocmd FileType python set sts=4
+"
+" Typescript Specific settings
+autocmd FileType typescript set sw=2
+autocmd FileType typescript set ts=2
+autocmd FileType typescript set sts=2
 
 " JavaScript
 autocmd FileType javascript set sw=2
@@ -261,7 +304,6 @@ au BufNewFile,BufRead *.es6 set filetype=javascript
 let g:javascript_enable_domhtmlcss = 1
 let g:jsx_ext_required = 0
 let g:javascript_plugin_flow = 1
-
 
 " html
 autocmd FileType html set sw=2
@@ -275,37 +317,6 @@ set noswapfile
 " Paste large amount of text in vim
 set pastetoggle=<F2>
 
-" Save key stroke
-nnoremap ; :
-nnoremap / :/
-
-" Space the final frontier
-let mapleader = ","
-
-" avoid ESC
-:imap <Leader>f <Esc>
-:imap <Leader>w <Esc>:w<CR>
-
-vnoremap <C-c> <Esc>
-
-nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>w :w<CR>
-
-nnoremap <leader>w :w<cr>
-inoremap <leader>w <C-c>:w<cr>
-
-" align-current-paragraph-with-leader-a
-noremap <leader>a =ip
-" toggle-paste-mode
-set pastetoggle=<leader>z
-
-nnoremap <Leader>o :CtrlP<CR>
-nnoremap <Leader>w :w<CR>
-
-" cd to the directory containing the file in the buffer. Both the local
-" and global flavors.
-nmap <leader>cd :cd %:h<CR>
-nmap <leader>lcd :lcd %:h<CR>
 
 " Shortcut to edit the vimrc
 nmap <silent> <leader>vimrc :e ~/.vimrc<CR>
@@ -314,6 +325,7 @@ nmap <silent> <leader>vimrc :e ~/.vimrc<CR>
 set clipboard=unnamed
 map <leader>y "*y
 map <leader>p "*p
+nnoremap Y y$
 
 " MRU
 map <leader>m :MRU<CR>
@@ -342,6 +354,8 @@ nnoremap <silent> <leader>cf :let @* = expand("%:~")<CR>
 nnoremap <silent> <leader>cn :let @* = expand("%:t")<CR>
 " Ag
 let g:ackprg = 'ag --nogroup --nocolor --column'
+
+
 
 
 
@@ -402,7 +416,15 @@ if has("gui_macvim")
   noremap <D-9> :tabn 9<CR>
   " Command-0 goes to the last tab
   noremap <D-0> :tablast<CR>
-  
   set guifont=Monaco:h14     " OSX.
-  :call ShowTabNumber()
 endif
+
+" ale
+
+"let g:ale_completion_enabled = 1
+" Fix files with prettier, and then ESLint.
+" " Equivalent to the above.
+let b:ale_fixers = {'javascript': ['prettier', 'jslint']}
+let b:ale_fixers = {'es6': ['prettier', 'eslint']}
+let g:airline#extensions#ale#enabled = 1
+
