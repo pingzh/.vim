@@ -60,16 +60,9 @@ Plugin 'skwp/greplace.vim'
 Plugin 'pangloss/vim-javascript'
 Plugin 'mxw/vim-jsx'
 Plugin 'pearofducks/ansible-vim'
-"Plugin 'tmhedberg/SimpylFold'
-Plugin 'isRuslan/vim-es6'
-Plugin 'w0rp/ale'
-Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
-Plugin 'Quramy/tsuquyomi'
-" Plugin 'Shougo/neocomplete.vim'
-
+Plugin 'fatih/vim-go'
 Plugin 'prabirshrestha/async.vim'
 Plugin 'prabirshrestha/asyncomplete.vim'
-Plugin 'prabirshrestha/asyncomplete-flow.vim'
 
 
 """"""""""""""""""""""""""""""
@@ -198,8 +191,6 @@ set nostartofline
 set noshowmode
 set report=0 " Show all changes.
 set ruler " Show the cursor position
-set tabstop=2
-set softtabstop=2 " Tab key results in 2 spaces
 set title " Show the filename in the window titlebar.
 set ttyfast " Send more characters at a given time.
 set wildchar=<TAB> " Character for CLI expansion (TAB-completion).
@@ -428,3 +419,8 @@ let b:ale_fixers = {'javascript': ['prettier', 'jslint']}
 let b:ale_fixers = {'es6': ['prettier', 'eslint']}
 let g:airline#extensions#ale#enabled = 1
 
+
+" Golang 
+au filetype go inoremap <buffer> . .<C-x><C-o>
+let g:go_fmt_command = "goimports"    # Run goimports along gofmt on each save     
+let g:go_auto_type_info = 1           # Automatically get signature/type info for object under cursor     
