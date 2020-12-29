@@ -458,4 +458,7 @@ endfor
 return s
 endfu
 set tabline=%!MyTabLine()
+
+nnoremap <C-j> gT
+nnoremap <C-k> gt
 " END Show vim tab number
