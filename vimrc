@@ -418,12 +418,6 @@ let b:ale_fixers = {'javascript': ['prettier', 'jslint']}
 let b:ale_fixers = {'es6': ['prettier', 'eslint']}
 let g:airline#extensions#ale#enabled = 1
 
-
-" Golang 
-au filetype go inoremap <buffer> . .<C-x><C-o>
-let g:go_fmt_command = "goimports"    # Run goimports along gofmt on each save     
-let g:go_auto_type_info = 1           # Automatically get signature/type info for object under cursor     
-
 " Show vim tab number
 
 fu! MyTabLabel(n)
